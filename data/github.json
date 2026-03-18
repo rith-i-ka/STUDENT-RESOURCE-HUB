@@ -1,52 +1,52 @@
 [
     {
-        "name": "full-stack-fastapi-template",
-        "url": "https://github.com/fastapi/full-stack-fastapi-template",
-        "stars": 42119
+        "name": "ethics",
+        "url": "https://github.com/hendrycks/ethics",
+        "stars": 316
     },
     {
-        "name": "nuxt",
-        "url": "https://github.com/nuxt/nuxt",
-        "stars": 59859
+        "name": "awesome-artificial-intelligence-regulation",
+        "url": "https://github.com/EthicalML/awesome-artificial-intelligence-regulation",
+        "stars": 1413
     },
     {
-        "name": "Become-A-Full-Stack-Web-Developer",
-        "url": "https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer",
-        "stars": 18057
+        "name": "ai-ethics",
+        "url": "https://github.com/ibalampanis/ai-ethics",
+        "stars": 13
     },
     {
-        "name": "Full-Stack-Foundations",
-        "url": "https://github.com/udacity/Full-Stack-Foundations",
-        "stars": 408
+        "name": "ethics.fast.ai",
+        "url": "https://github.com/fastai/ethics.fast.ai",
+        "stars": 17
     },
     {
-        "name": "full-blockchain-solidity-course-js",
-        "url": "https://github.com/smartcontractkit/full-blockchain-solidity-course-js",
-        "stars": 13992
+        "name": "Artificial-Intelligence-Deep-Learning-Machine-Learning-Tutorials",
+        "url": "https://github.com/TarrySingh/Artificial-Intelligence-Deep-Learning-Machine-Learning-Tutorials",
+        "stars": 3984
     },
     {
-        "name": "Angular-Full-Stack",
-        "url": "https://github.com/DavideViolante/Angular-Full-Stack",
-        "stars": 1541
+        "name": "ai-ethics",
+        "url": "https://github.com/FutureTranz-Inc/ai-ethics",
+        "stars": 5
     },
     {
-        "name": "full-stack-school",
-        "url": "https://github.com/safak/full-stack-school",
-        "stars": 829
+        "name": "DLAIE",
+        "url": "https://github.com/drscotthawley/DLAIE",
+        "stars": 43
     },
     {
-        "name": "FullStack-Blogging-App",
-        "url": "https://github.com/jaiswaladi246/FullStack-Blogging-App",
-        "stars": 108
+        "name": "Machine-Learning-Ethics-References",
+        "url": "https://github.com/radames/Machine-Learning-Ethics-References",
+        "stars": 64
     },
     {
-        "name": "simple-react-full-stack",
-        "url": "https://github.com/crsandeep/simple-react-full-stack",
-        "stars": 1632
+        "name": "Awesome-ML-Model-Governance",
+        "url": "https://github.com/visenger/Awesome-ML-Model-Governance",
+        "stars": 126
     },
     {
-        "name": "Codeception",
-        "url": "https://github.com/Codeception/Codeception",
-        "stars": 4856
+        "name": "ai-ethics",
+        "url": "https://github.com/sblodgett/ai-ethics",
+        "stars": 33
     }
 ]
