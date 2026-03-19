@@ -1,0 +1,40 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+}
+
+.buttons {
+    margin: 15px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    margin: 10px auto;
+    width: 60%;
+    border-radius: 8px;
+}
