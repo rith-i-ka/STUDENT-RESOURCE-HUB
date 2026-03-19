@@ -35,8 +35,7 @@ function display(items, type) {
     div.innerHTML = `
         <h3>${item.role}</h3>
         <p>🏢 ${item.company}</p>
-        <a href="${item.link}" target="_blank">Apply Now</a>
-    `;
+        <a href="${item.link || '#'}" target="_blank">Apply Now</a>    `;
 }
 
         container.appendChild(div);
