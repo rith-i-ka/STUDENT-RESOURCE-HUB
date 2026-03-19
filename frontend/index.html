@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script>
+    if (!localStorage.getItem("loggedIn")) {
+        window.location.href = "login.html";
+    }
+    </script>
 
 <div class="container">
     <h1>🔍 Resource Finder</h1>
