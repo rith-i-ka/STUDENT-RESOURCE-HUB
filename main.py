@@ -1,34 +1,41 @@
+from flask import Flask, request, jsonify
 from scrapers.gitscrap import scrape_github
 from scrapers.acadscrap import scrape_academics
 from scrapers.internscrap import scrape_internships
-from utils.helper import save_to_json, print_data
 
-def main():
-    keyword = input("Enter keyword: ")
-    print("\nSelect type:")
-    print("1. GitHub")
-    print("2. Academics")
-    print("3. Internships")
+app = Flask(__name__)
 
-    choice = input("Enter choice (1/2/3): ")
+# Home route (just to check server)
+@app.route("/")
+def home():
+    return "Backend is running 🚀"
 
-    if choice == "1":
-        data = scrape_github(keyword)
-        save_to_json(data, "github.json")
-        print_data("GitHub", data)
 
-    elif choice == "2":
-        data = scrape_academics(keyword)
-        save_to_json(data, "academics.json")
-        print_data("Academics", data)
+# Search route
+@app.route("/search", methods=["GET"])
+def search():
+    keyword = request.args.get("q")
+    data_type = request.args.get("type")
 
-    elif choice == "3":
-        data = scrape_internships(keyword)
-        save_to_json(data, "internships.json")
-        print_data("Internships", data)
+    if not keyword or not data_type:
+        return jsonify({"error": "Missing keyword or type"}), 400
+
+    if data_type == "github":
+        result = scrape_github(keyword)
+
+    elif data_type == "academics":
+        result = scrape_academics(keyword)
+
+    elif data_type == "internships":
+        result = scrape_internships(keyword)
 
     else:
-        print("Invalid choice ❌")
+        return jsonify({"error": "Invalid type"}), 400
+
+    return jsonify({
+        "results": result
+    })
+
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
