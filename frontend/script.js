@@ -15,10 +15,7 @@ function display(items) {
         const div = document.createElement("div");
         div.className = "card";
 
-        div.innerHTML = `
-            <pre>${JSON.stringify(item, null, 2)}</pre>
-        `;
-
+        div.innerHTML = `<pre>${JSON.stringify(item, null, 2)}</pre>`;
         container.appendChild(div);
     });
 }
