@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Scraper App</title>
+    <title>Resource Finder</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+<div class="container">
     <h1>🔍 Resource Finder</h1>
 
-    <input type="text" id="keyword" placeholder="Enter keyword">
+    <input type="text" id="keyword" placeholder="Search (e.g. Data Science)">
 
-    <div>
+    <div class="buttons">
         <button onclick="search('github')">GitHub</button>
         <button onclick="search('academics')">Academics</button>
         <button onclick="search('internships')">Internships</button>
     </div>
 
     <div id="results"></div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>

@@ -1,27 +1,64 @@
 body {
-    font-family: Arial;
+    font-family: 'Segoe UI', sans-serif;
+    background: #eef2f7;
+    margin: 0;
+}
+
+.container {
     text-align: center;
-    background: #f5f5f5;
+    padding: 30px;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 input {
-    padding: 10px;
-    width: 250px;
+    padding: 12px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.buttons {
+    margin: 20px 0;
 }
 
 button {
-    padding: 10px;
+    padding: 10px 15px;
     margin: 5px;
-    background: green;
-    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card {
     background: white;
-    margin: 10px auto;
-    padding: 10px;
     width: 60%;
-    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.card a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
 }
