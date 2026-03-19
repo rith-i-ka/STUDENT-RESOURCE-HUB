@@ -1,20 +1,27 @@
 import requests
 from bs4 import BeautifulSoup
-from config import INTERNSHIP_URL, HEADERS
 
 def scrape_internships(keyword):
-    url = INTERNSHIP_URL + keyword
-    response = requests.get(url, headers=HEADERS)
+    url = f"https://www.indeed.com/jobs?q={keyword}+internship"
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+    response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.text, "html.parser")
 
     internships = []
-    for card in soup.select(".individual_internship")[:5]:
-        title = card.select_one(".profile")
-        company = card.select_one(".company_name")
+
+    for job in soup.select(".job_seen_beacon")[:5]:
+        title = job.select_one("h2 a span")
+        company = job.select_one(".companyName")
+        link = job.select_one("h2 a")
 
         internships.append({
             "role": title.text.strip() if title else "N/A",
-            "company": company.text.strip() if company else "N/A"
+            "company": company.text.strip() if company else "N/A",
+            "link": "https://www.indeed.com" + link["href"] if link else "N/A"
         })
 
     return internships
