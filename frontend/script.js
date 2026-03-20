@@ -1,55 +1,74 @@
-function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+// Auth Guard
+if (!localStorage.getItem("loggedIn")) {
+    window.location.href = "login.html";
+}
 
-    if (user && pass) {
-        localStorage.setItem("loggedIn", true);
-        window.location.href = "index.html";
-    } else {
-        alert("Enter username and password");
+// Initialize Lucide Icons
+lucide.createIcons();
+
+// DOM Elements
+const searchInput = document.getElementById('searchInput');
+const categoryButtons = document.querySelectorAll('.cat-btn');
+const resultsList = document.getElementById('resultsList');
+const emptyState = document.getElementById('emptyState');
+const loadingState = document.getElementById('loadingState');
+const logoutBtn = document.getElementById('logoutBtn');
+
+let activeType = null;
+
+// Logout Logic
+logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "login.html";
+});
+
+// Search Logic
+async function performSearch(type) {
+    const keyword = searchInput.value;
+    if (!keyword) return alert("Please enter a keyword first!");
+
+    // UI Updates
+    activeType = type;
+    categoryButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.type === type);
+    });
+
+    emptyState.classList.add('hidden');
+    loadingState.classList.remove('hidden');
+    resultsList.innerHTML = '';
+
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/search?q=${keyword}&type=${type}`);
+        const data = await response.json();
+        renderResults(data.results);
+    } catch (error) {
+        console.error("Search failed", error);
+        resultsList.innerHTML = `<p class="status-msg">Error connecting to backend.</p>`;
+    } finally {
+        loadingState.classList.add('hidden');
     }
 }
-async function search(type) {
-    const keyword = document.getElementById("keyword").value;
 
-    const res = await fetch(`http://127.0.0.1:5000/search?q=${keyword}&type=${type}`);
-    const data = await res.json();
+function renderResults(results) {
+    if (results.length === 0) {
+        resultsList.innerHTML = `<p class="status-msg">No results found.</p>`;
+        return;
+    }
 
-    display(data.results, type);
+    resultsList.innerHTML = results.map(item => `
+        <div class="result-card">
+            <h4 style="margin: 0 0 8px 0">${item.title || item.name || 'Untitled'}</h4>
+            <p style="font-size: 14px; color: #64748b; margin-bottom: 12px;">${item.description || 'No description available.'}</p>
+            <a href="${item.url || '#'}" target="_blank" style="color: #2563eb; font-size: 13px; font-weight: 600; text-decoration: none;">View Resource →</a>
+        </div>
+    `).join('');
 }
 
-function display(items, type) {
-    const container = document.getElementById("results");
-    container.innerHTML = "";
+// Event Listeners
+categoryButtons.forEach(btn => {
+    btn.addEventListener('click', () => performSearch(btn.dataset.type));
+});
 
-    items.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "card";
-
-        // 👇 Different UI for each type
-        if (type === "github") {
-            div.innerHTML = `
-                <h3>${item.name}</h3>
-                ⭐ Stars: ${item.stars} <br>
-                🔗 <a href="${item.url}" target="_blank">View Repo</a>
-            `;
-        }
-
-        else if (type === "academics") {
-            div.innerHTML = `
-                <h3>${item.title}</h3>
-                📄 <a href="${item.link}" target="_blank">Read Paper</a>
-            `;
-        }
-
-        else if (type === "internships") {
-            div.innerHTML = `
-                <h3>${item.role}</h3>
-                🏢 ${item.company}<br>
-                🔗<a href="${item.link}" target="_blank">Apply Now</a>
-            `;
-        }
-
-        container.appendChild(div);
-    });
-}
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && activeType) performSearch(activeType);
+});
