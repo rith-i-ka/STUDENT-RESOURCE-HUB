@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Resource Finder</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <script>
+        if (!localStorage.getItem("loggedIn")) {
+            window.location.href = "login.html";
+        }
+    </script>
+    <div class="container">
+        <h1>🔍 Resource Finder</h1>
 
-<div class="container">
-    <h1>🔍 Resource Finder</h1>
+        <input type="text" id="keyword" placeholder="Search (e.g. Data Science)">
 
-    <input type="text" id="keyword" placeholder="Search (e.g. Data Science)">
+        <div class="buttons">
+            <button onclick="search('github')">GitHub</button>
+            <button onclick="search('academics')">Academics</button>
+            <button onclick="search('internships')">Internships</button>
+        </div>
 
-    <div class="buttons">
-        <button onclick="search('github')">GitHub</button>
-        <button onclick="search('academics')">Academics</button>
-        <button onclick="search('internships')">Internships</button>
+        <div id="results"></div>
     </div>
 
-    <div id="results"></div>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
