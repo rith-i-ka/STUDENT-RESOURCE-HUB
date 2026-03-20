@@ -1,26 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Login - Resource Finder</title>
+    <meta charset="UTF-8">
+    <title>Login - Resource Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
-<body class="auth-body">
-
-    <div class="auth-container">
-        <h2>Welcome Back 👋</h2>
-        <p class="subtitle">Login to continue</p>
-
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-
-        <button onclick="login()">Login</button>
-
-        <p class="small-text">Don't have an account? <span>Create one</span></p>
+<body class="login-page">
+    <div class="login-card">
+        <h2>Welcome Back</h2>
+        <p>Login to access the Resource Hub</p>
+        <button id="loginBtn" class="btn-primary">Sign In</button>
     </div>
-
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            localStorage.setItem('loggedIn', 'true');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
-
 </html>
