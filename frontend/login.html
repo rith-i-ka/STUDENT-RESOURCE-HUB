@@ -33,7 +33,10 @@ body.light{
   --muted:#5a6490;
   --input:#e4e9f7;
 }
-body.light .blob{opacity:0.08;}
+body.light .blob{
+  opacity:0.18;
+  filter:blur(120px);
+}
 body.light .grid-overlay{background-image:linear-gradient(rgba(58,124,232,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(58,124,232,0.05) 1px,transparent 1px);}
 body.light .sep-line{background:linear-gradient(to bottom,transparent,#c0cae0,transparent);}
 body.light .field input:focus{background:#f5f8ff;box-shadow:0 0 0 4px rgba(58,124,232,0.10);}
@@ -70,7 +73,15 @@ body{
 .blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.16;animation:drift 14s ease-in-out infinite alternate;}
 .blob1{width:560px;height:560px;background:var(--blue);top:-180px;left:-160px;}
 .blob2{width:460px;height:460px;background:var(--teal);bottom:-150px;right:-130px;animation-delay:5s;}
+body.light .blob2{
+  background: #34d399;
+  opacity:0.25;
+}
 .blob3{width:300px;height:300px;background:var(--pink);top:35%;left:42%;animation-delay:9s;}
+body.light .blob3{
+  background:#3a7ce8;
+  opacity:0.15;
+}
 @keyframes drift{from{transform:translate(0,0);}to{transform:translate(26px,16px);}}
 
 .grid-overlay{
